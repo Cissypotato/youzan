@@ -1,8 +1,8 @@
 <template>
     <div class="bottom-nav">
         <ul>
-          <li :class="{active:curIndex===index}" v-for="(list,index) in navConfig">
-            <a :href="list.href"><i :class="list.icon"></i><div>{{list.name}}</div></a>
+          <li :class="{active:curIndex===index}" v-for="(list,index) in navConfig" @click="changeNav(list,index)">
+            <a><i :class="list.icon"></i><div>{{list.name}}</div></a>
           </li>
           
         </ul>
@@ -11,6 +11,8 @@
 
 
 <script>
+  import qs from 'qs'
+  let {index}=qs.parse(location.search.substr(1))
   let navConfig=[
     {
       name:'有赞',
@@ -38,7 +40,9 @@
       }
     },
     methods:{
-      
+      changeNav(list,index){
+        location.href=`${list.href}?index=${index}`
+      }
     }
   };
 </script>
