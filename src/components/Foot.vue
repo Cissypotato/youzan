@@ -12,7 +12,8 @@
 
 <script>
   import qs from 'qs'
-  let {index}=qs.parse(location.search.substr(1))
+  var a=qs.parse(location.search.substr(1))
+  let {index}=a
   let navConfig=[
     {
       name:'有赞',
@@ -36,7 +37,7 @@
     data(){
       return{
         navConfig,
-        curIndex:0
+        curIndex:parseInt(index) || 0
       }
     },
     methods:{

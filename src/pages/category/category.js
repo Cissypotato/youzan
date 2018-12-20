@@ -5,9 +5,9 @@ import './category.css'
 import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
+import mixin from 'js/mixin'
 
 
-import Foot from 'components/Foot.vue'
 
 new Vue({
     el:'#app',
@@ -21,9 +21,7 @@ new Vue({
             hotGoods:null
         }
     },
-    components:{
-        Foot
-    },
+    
     created(){
         this.getTopList()
         this.getSubList(0)
@@ -53,5 +51,6 @@ new Vue({
         toSearch(list){
             location.href=`search.html?keyword=${list.name}&id=${list.id}`
         }
-    }
+    },
+    mixins:[mixin]
 })
